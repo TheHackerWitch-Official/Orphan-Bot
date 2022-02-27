@@ -3,8 +3,19 @@ import os
 from dotenv import load_dotenv
 
 class MyClient(discord.Client):
+
     async def on_ready(self):
-        print(f'{self.user} has joined the server!')
+        
+        GUILD = get_guild()
+        
+        for guild in self.guilds:
+            if guild.name == GUILD:
+                break;
+
+        print(
+                f'{self.user} is connected to the following guild:\n'
+                f'{guild.name}(id: {guild.id})'
+        )
 
 
     async def on_message(self, message):
@@ -12,15 +23,18 @@ class MyClient(discord.Client):
         if message.author == self.user:
             return
 
-        if message.content == 'ping':
-            await message.channel.send('poggers')
+        if message.content == 'Hi, Orphan Bot!':
+            await message.channel.send(f'Hello, {message.author}!')
 
 
 
-def get_environment_variables():
+def get_token():
     load_dotenv()
     return os.getenv('TOKEN')
 
+def get_guild():
+    load_dotenv()
+    return os.getenv('GUILD')
 
 def start_bot(TOKEN):
     client = MyClient()
@@ -30,9 +44,11 @@ def start_bot(TOKEN):
 
 def main():
     # Load environment variables
-    start_bot(get_environment_variables())
+    start_bot(get_token())
 
 
 
 if __name__ == '__main__':
     main()
+
+
