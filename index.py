@@ -16,10 +16,23 @@ class MyClient(discord.Client):
             await message.channel.send('poggers')
 
 
-# Load environment variables
-load_dotenv()
-TOKEN = os.getenv('TOKEN')
+
+def get_environment_variables():
+    load_dotenv()
+    return os.getenv('TOKEN')
 
 
-client = MyClient()
-client.run(TOKEN)
+def start_bot(TOKEN):
+    client = MyClient()
+    client.run(TOKEN)
+
+
+
+def main():
+    # Load environment variables
+    start_bot(get_environment_variables())
+
+
+
+if __name__ == '__main__':
+    main()
