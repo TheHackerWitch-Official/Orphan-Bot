@@ -5,7 +5,8 @@ Hi! Meet Orphan Bot. Orphan Bot was built to assist the members of The Orphans g
 Planned functionality for Orphan Bot is listed below. 
 
 ### Planned Functionality
-- World Boss Reminders (NA)
+- World Boss Reminders (NA EST)
 - RNJesus Calculator 
+- Market Volatility Indicator
 
 If you are interested in supporting this project, please consider donating to the creator at this [link](https://ko-fi.com/ch4kra). Thanks for taking a look at Orphan Bot! 
