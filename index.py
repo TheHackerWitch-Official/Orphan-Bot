@@ -1,6 +1,7 @@
 import discord
 import os
 from dotenv import load_dotenv
+import get_boss
 
 class MyClient(discord.Client):
 
@@ -23,10 +24,14 @@ class MyClient(discord.Client):
         if message.author == self.user:
             return
 
-        if message.content == 'Hi, Orphan Bot!':
+        if message.content == 'hi, orphan bot!':
             await message.channel.send(f'Hello, {message.author}!')
 
+        if message.content == "what day is it?":
+            await message.channel.send("Today is " + get_boss.get_day() + ".")
 
+        if message.content == "boss schedule":
+            await message.channel.send(get_boss.get_boss_schedule())
 
 def get_token():
     load_dotenv()
@@ -40,12 +45,9 @@ def start_bot(TOKEN):
     client = MyClient()
     client.run(TOKEN)
 
-
-
 def main():
     # Load environment variables
     start_bot(get_token())
-
 
 
 if __name__ == '__main__':
